@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Recipe from './Recipe';
+import './App.css';
 
 const App = () => {
 
@@ -21,10 +22,12 @@ const App = () => {
     setRecipes(data.hits);
   }
 
+  //take in user input and search ingredient/dish
   const updateSearch = event => {
     setSearch(event.target.value);
   }
 
+  //set search to query in API endpoint, clear input bar
   const getSearch = event => {
     event.preventDefault();
     setQuery(search);
@@ -43,6 +46,7 @@ const App = () => {
           className="search-button" 
           type="submit">Search</button>
       </form>
+      <div className="recipes">
       {recipes.map(recipe => (
         <Recipe 
           key={recipe.recipe.label}
@@ -51,6 +55,7 @@ const App = () => {
           image={recipe.recipe.image}
         />
       ))}
+      </div>
     </div>
   );
 }
